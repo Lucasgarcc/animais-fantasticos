@@ -21,7 +21,4 @@ function initAccordion() {
   }
 }
 
-// Esconde o elemento com a classe 'menu' ao clicar no botão
-// eslint-disable-next-line func-names
-
 export default initAccordion();
