@@ -1,0 +1,50 @@
+[data-dropdown] {
+  position: relative;
+}
+
+[data-dropdown] .dropdwon-menu {
+  display: none;
+}
+
+[data-dropdown]:hover .dropdwon-menu,
+[data-dropdown]:hover .dropdwon-menu {
+  display: block;
+  animation: show-up .4s forwards;
+}
+
+.dropdwon-menu {
+  position: absolute;
+  top: 38px;
+  background: #006992;
+  border: 2px solid rgba(0, 0, 0,.6);
+  z-index: 200;
+}
+
+@keyframes show-up {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 40px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.dropdwon-menu::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: -10px;
+  width: 0px;
+  height: 0px;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #006992;
+}
+
+.dropdwon-menu li a:hover {
+  color: #fff;
+}
+
