@@ -20,6 +20,10 @@ Navegação Intuitiva: Interface fácil de usar com navegação clara e organiza
 API: Utilizada para extrair dados sobre os animais.
 ## Stack utilizada
 
+## Links: https://66b629672c58d103da23cd0a--animaisfantasticos-garcia.netlify.app/
+
+![Captura de tela_9-8-2024_104411_127 0 0 1](https://github.com/user-attachments/assets/75d81604-61ad-4c00-9258-f6f44e4cbded)
+
 **Front-end:**
 
 ![Html](https://img.shields.io/badge/HTML-323330?style=for-the-badge&logo=data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48IS0tIFVwbG9hZGVkIHRvOiBTVkcgUmVwbywgd3d3LnN2Z3JlcG8uY29tLCBHZW5lcmF0b3I6IFNWRyBSZXBvIE1peGVyIFRvb2xzIC0tPgo8c3ZnIHdpZHRoPSI4MDBweCIgaGVpZ2h0PSI4MDBweCIgdmlld0JveD0iMCAwIDMyIDMyIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPg0KPHBhdGggZD0iTTYgMjhMNCAzSDI4TDI2IDI4TDE2IDMxTDYgMjhaIiBmaWxsPSIjRTQ0RDI2Ii8+DQo8cGF0aCBkPSJNMjYgNUgxNlYyOS41TDI0IDI3TDI2IDVaIiBmaWxsPSIjRjE2NTI5Ii8+DQo8cGF0aCBkPSJNOS41IDE3LjVMOC41IDhIMjRMMjMuNSAxMUgxMS41TDEyIDE0LjVIMjNMMjIgMjRMMTYgMjZMMTAgMjRMOS41IDE5SDEyLjVMMTMgMjEuNUwxNiAyMi41TDE5IDIxLjVMMTkuNSAxNy41SDkuNVoiIGZpbGw9IndoaXRlIi8+DQo8L3N2Zz4=)
