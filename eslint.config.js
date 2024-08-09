@@ -30,6 +30,13 @@ export default [
       ecmaVersion: 12,
       sourceType: "module",
     },
+      "prettier/prettier": [
+        "error",
+        {
+          "singleQuote": true,
+          "parser": "flow"
+        }
+      ],
     plugins: {
       i18n,
       import: importPlugin,

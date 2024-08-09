@@ -1,14 +1,14 @@
-import path from 'path';
-import { fileURLToPath } from 'url';
+import path from "path";
+import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export default {
-  entry: './js/app.js',
+  entry: "./js/app.js",
   output: {
-    path: path.resolve(__dirname, './'),
-    filename: './main.js/main.js',
+    path: path.resolve(__dirname, "./"),
+    filename: "./main.js/main.js",
   },
   module: {
     rules: [
@@ -16,10 +16,10 @@ export default {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
+          loader: "babel-loader",
           options: {
-            presets: ['@babel/preset-env'],
-            plugins: ['@babel/plugin-transform-runtime'],
+            presets: ["@babel/preset-env"],
+            plugins: ["@babel/plugin-transform-runtime"],
           },
         },
       },
