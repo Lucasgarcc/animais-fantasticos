@@ -1,39 +1,52 @@
-const section = document.querySelectorAll("#animais section");
-
 // selecionando a secction e addicionando a class no data-anime
 // index % 2 === 0 ? (index += 1) : (div.dataset.anime = "show-down")
-section.forEach((div, index) => {
-  if (index % 2 === 0) {
-    index += 1;
-  } else {
-    div.dataset.anime = "show-down";
+
+class Tab {
+  constructor(menu, content) {
+    this.tabMenu = document.querySelectorAll(menu);
+    this.tabContent = document.querySelectorAll(content);
+    this.section = document.querySelectorAll('#animais section');
+    this.activeClass = 'ativo';
+    this.init();
   }
-  div.classList.add(div.dataset.anime);
-});
 
-// TABMENU & ANIMAL LISTA
-function initTab() {
-  const tabMenu = document.querySelectorAll('[data-tab="menu"] li');
-  const tabContent = document.querySelectorAll('[data-tab="content"] section');
-
-  function activeTab(index) {
-    tabContent.forEach((item) => {
-      item.classList.remove("ativo");
+  // ativa a tab de acordo com o index dela
+  activeTab(index) {
+    this.tabContent.forEach((item) => {
+      item.classList.remove(this.activeClass);
     });
-    const animacaoTab = tabContent[index].dataset.anima;
-    tabContent[index].classList.add("ativo", animacaoTab);
+    const animacaoTab = this.tabContent[index].dataset.anima;
+    this.tabContent[index].classList.add(this.activeClass, animacaoTab);
   }
 
-  if (tabMenu.length && tabContent.length) {
-    tabContent[0].classList.add("ativo");
-    // previne e deixa item ativo
+  tabSection() {
+    this.section.forEach((div, index) => {
+      if (index % 2 === 0) {
+        index += 1;
+      } else {
+        div.dataset.anime = 'show-down';
+      }
+      div.classList.add(div.dataset.anime);
+    });
+  }
 
-    tabMenu.forEach((itemMenu, index) => {
-      itemMenu.addEventListener("click", () => {
-        activeTab(index);
+  // adicona os eventos nas tabs
+  addTabEvent() {
+    this.tabMenu.forEach((itemMenu, index) => {
+      itemMenu.addEventListener('click', () => {
+        this.activeTab(index);
       });
     });
   }
-}
 
-export default initTab();
+  init() {
+    // adciona o evento de animção right e down a section de cada animal
+    this.tabSection();
+    if (this.tabMenu.length && this.tabContent.length) {
+      this.tabContent[0].classList.add(this.activeClass);
+      // previne e deixa item ativo
+      this.addTabEvent();
+    }
+  }
+}
+export default Tab;
