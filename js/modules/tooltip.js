@@ -54,7 +54,6 @@ class ToolTip {
   init() {
     if (this.Tooltips.length) {
       this.addToolTipsEvent();
-      console.log('init');
     }
     return this;
   }

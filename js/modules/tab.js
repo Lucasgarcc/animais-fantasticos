@@ -1,6 +1,3 @@
-// selecionando a secction e addicionando a class no data-anime
-// index % 2 === 0 ? (index += 1) : (div.dataset.anime = "show-down")
-
 class Tab {
   constructor(menu, content) {
     this.tabMenu = document.querySelectorAll(menu);
@@ -47,6 +44,7 @@ class Tab {
       // previne e deixa item ativo
       this.addTabEvent();
     }
+    return this;
   }
 }
 export default Tab;
