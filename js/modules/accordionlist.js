@@ -4,7 +4,6 @@ class Accordion {
   constructor(list) {
     this.accordionList = document.querySelectorAll(list);
     this.activeClass = 'ativo';
-    console.log('test');
     // inicializa a class
     this.init();
   }
@@ -27,6 +26,7 @@ class Accordion {
       this.toggleAccordion(this.accordionList[0]);
       this.addEventListeners();
     }
+    return this;
   }
 }
 

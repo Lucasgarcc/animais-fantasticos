@@ -3,8 +3,8 @@ class Scrollsuave {
     this.linksInternos = document.querySelectorAll(links);
     if (options === undefined) {
       this.options = {
-        behavior: "smooth",
-        block: "start",
+        behavior: 'smooth',
+        block: 'start',
       };
     } else {
       this.options = options;
@@ -15,14 +15,14 @@ class Scrollsuave {
 
   scrollLinks(e) {
     e.preventDefault();
-    const href = e.currentTarget.getAttribute("href");
+    const href = e.currentTarget.getAttribute('href');
     const section = document.querySelector(href);
     section.scrollIntoView(this.options);
   }
 
   addlinkEvent() {
-    linksInternos.forEach((link) => {
-      link.addEventListener("click", this.scrollLinks);
+    this.linksInternos.forEach((link) => {
+      link.addEventListener('click', this.scrollLinks);
     });
   }
 
@@ -35,4 +35,4 @@ class Scrollsuave {
   }
 }
 
-export default Scrollsuave();
+export default Scrollsuave;
