@@ -24,12 +24,14 @@
     "globals": "^15.9.0",
     "prettier": "^3.0.0",
     "webpack": "^5.93.0",
-    "webpack-cli": "^5.1.4",
-    "endOfLine": "auto"
+    "webpack-cli": "^5.1.4"
   },
   "scripts": {
     "build": "webpack --mode production",
     "dev": "webpack --mode development --watch",
     "lint": "eslint ./js/app.js ./js/modules/**/*.js"
-  }
+  },
+  "description": "- O projeto Animais Fantásticos é um site interativo que permite explorar informações detalhadas sobre diferentes criaturas fantásticas. Desenvolvido com HTML5 semântico, CSS puro e JavaScript, o site utiliza uma API para extrair dados sobre os animais.",
+  "author": "",
+  "license": "ISC"
 }

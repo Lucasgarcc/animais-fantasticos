@@ -40,8 +40,6 @@ export default [
       'prefer-const': 'error',
       'import/no-unresolved': 'error',
       'import/named': 'error',
-      'import/default': 'error',
-      'import/namespace': 'error',
       'prettier/prettier': [
         'error',
         {
@@ -55,7 +53,6 @@ export default [
       'no-param-reassign': 0,
       'import/extensions': 0,
       'import/default': 0,
-      'no-import-namespace': 0,
       'import/no-named-as-default': 'off',
       'import/no-named-as-default-member': 'off',
       eqeqeq: 'error',
