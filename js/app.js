@@ -7,7 +7,7 @@ import ToolTip from './modules/tooltip.js';
 import initDropDown from './modules/dropdownMenu.js';
 import initMenuMobile from './modules/menu-mobile.js';
 import initFuncionamento from './modules/funcionamento.js';
-import initFetchAinimas from './modules/fetch-anamais.js';
+import initFetchAinimas from './modules/fetch-animais.js';
 import initFetchBitcoin from './modules/fetch-bitcoin.js';
 
 const tooltip = new ToolTip('[data-tooltip]');
