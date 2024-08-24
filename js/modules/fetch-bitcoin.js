@@ -10,6 +10,9 @@ async function initFetchBitcoin() {
         console.log(Error(`Erro: ${error} na requisição da API...`));
       });
   }
+  <<<<<<< refatorar-fetch-bitcoin
+
+  fetchBitcoin('http://blockchain.info/ticker', '.btc-preco')
   fetchBitcoin();
 }
 
