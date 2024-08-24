@@ -10,7 +10,7 @@ async function initFetchBitcoin() {
         console.log(Error(`Erro: ${error} na requisição da API...`));
       });
   }
-  // fetch mostra valor da Bitcoin
+
   fetchBitcoin('http://blockchain.info/ticker', '.btc-preco');
 }
 
