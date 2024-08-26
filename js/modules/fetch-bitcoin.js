@@ -1,18 +1,16 @@
 async function initFetchBitcoin() {
-  async function fetchBitcoin() {
-    fetch('http://blockchain.info/ticker')
+  async function fetchBitcoin(url, target) {
+    fetch(url)
       .then((resp) => resp.json())
       .then((data) => {
-        const btcPreco = document.querySelector('.btc-preco');
+        const btcPreco = document.querySelector(target);
         btcPreco.innerText = (2000 / data.BRL.sell).toFixed(4);
       })
       .catch((error) => {
         console.log(Error(`Erro: ${error} na requisição da API...`));
       });
   }
-
-  fetchBitcoin('http://blockchain.info/ticker', '.btc-preco');
-  fetchBitcoin();
+  fetchBitcoin('https://blockchain.info/ticker', '.btc-preco');
 }
 
 export default initFetchBitcoin();
