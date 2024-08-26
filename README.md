@@ -20,7 +20,7 @@ Navegação Intuitiva: Interface fácil de usar com navegação clara e organiza
 API: Utilizada para extrair dados sobre os animais.
 ## Stack utilizada
 
-## Links: https://66b629672c58d103da23cd0a--animaisfantasticos-garcia.netlify.app/
+## Link: https://animaisfantasticos-garcia.netlify.app/
 
 ![Captura de tela_9-8-2024_104411_127 0 0 1](https://github.com/user-attachments/assets/75d81604-61ad-4c00-9258-f6f44e4cbded)
 
