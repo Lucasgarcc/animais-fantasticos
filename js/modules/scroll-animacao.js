@@ -1,33 +1,54 @@
 // ANIMAÇÃO AO SCROLL
 
-function initScrollAnimation() {
-  const sections = document.querySelectorAll('[data-anima="scroll"]');
-  const windowTela = window.innerHeight * 0.6;
-
+class initScrollAnima {
   // variavel pega valor do window html atraves da prorpriedade
   // innerHeight multiplicado por 60% da tela.
 
-  const ativo = "ativo";
+  constructor(section) {
+    this.sections = document.querySelectorAll(section);
+    this.windowTela = window.innerHeight * 0.6;
+    this.classActive = 'ativo';
+    this.checkDistance = this.checkDistance.bind(this);
 
-  function animaScroll() {
-    sections.forEach((section) => {
-      const sectionTop = section.getBoundingClientRect().top;
-      const isSectionVisible = sectionTop - windowTela <= 0;
-      // concatena a variavel -[section] a o metodo que pega,
-      // todos valores do scroll da pagina concatenado ao valor do topo.
-      if (isSectionVisible) {
-        // varifica se valor do scroll da pagina for maior que zero.
-        section.classList.add(ativo);
-      } else if (section.classList.contains(ativo)) {
-        section.classList.remove(ativo);
+    this.init();
+  }
+
+  // Pega valor de cada item section em relação ao topo do site.
+  getDistance() {
+    this.distance = [...this.sections].map((section) => {
+      const offset = section.offsetTop;
+      return {
+        element: section,
+        offset: Math.floor(offset - this.windowTela),
+      };
+    });
+  }
+
+  // Verifica a distância em cada objeto em relação ao scroll do site.
+  checkDistance() {
+    console.log(window.scrollY);
+    this.distance.forEach((section) => {
+      if (window.scrollY >= section.offset) {
+        section.element.classList.add(this.classActive);
+      } else if (section.element.classList.contains(this.classActive)) {
+        section.element.classList.remove(this.classActive);
       }
     });
   }
 
-  if (sections.length) {
-    animaScroll();
-    window.addEventListener("scroll", animaScroll);
+  init() {
+    if (this.sections) {
+      this.getDistance();
+      this.checkDistance();
+      window.addEventListener('scroll', this.checkDistance);
+    }
+    return this;
+  }
+
+  // Remove evento do scroll
+  stop() {
+    window.removeEventListener('scroll', this.checkDistance);
   }
 }
 
-export default initScrollAnimation();
+export default initScrollAnima;
