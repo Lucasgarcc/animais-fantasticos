@@ -1,3 +1,5 @@
+import debounce from './debounce.js';
+
 // ANIMAÇÃO AO SCROLL
 
 class initScrollAnima {
@@ -8,7 +10,7 @@ class initScrollAnima {
     this.sections = document.querySelectorAll(section);
     this.windowTela = window.innerHeight * 0.6;
     this.classActive = 'ativo';
-    this.checkDistance = this.checkDistance.bind(this);
+    this.checkDistance = debounce(this.checkDistance.bind(this), 50);
 
     this.init();
   }
@@ -26,7 +28,6 @@ class initScrollAnima {
 
   // Verifica a distância em cada objeto em relação ao scroll do site.
   checkDistance() {
-    console.log(window.scrollY);
     this.distance.forEach((section) => {
       if (window.scrollY >= section.offset) {
         section.element.classList.add(this.classActive);
@@ -37,7 +38,7 @@ class initScrollAnima {
   }
 
   init() {
-    if (this.sections) {
+    if (this.sections.length) {
       this.getDistance();
       this.checkDistance();
       window.addEventListener('scroll', this.checkDistance);
