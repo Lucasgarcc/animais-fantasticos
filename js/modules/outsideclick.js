@@ -2,27 +2,40 @@
 
 // na linha 12: Alternativa sem setTimeout: Uma alternativa é usar o evento DOMContentLoaded para garantir que o código seja executado somente após o carregamento completo do DOM. Por exemplo: JavaScript document.addEventListener('DOMContentLoaded', () => { });
 
-function outsideClick(element, events, callback) {
-  const html = document.documentElement;
-  const outside = "data-outside";
+class OutsideClick {
+  constructor(element, events, callback) {
+    this.element = element;
+    this.events = events;
+    this.callback = callback;
 
-  function handleOutsideClick(event) {
-    if (!element.contains(event.target)) {
-      element.removeAttribute(outside);
-      events.forEach((userEvent) => {
-        html.removeEventListener(userEvent, handleOutsideClick);
+    // Bind o método para garantir que `this` funcione corretamente
+    this.handleOutsideClick = this.handleOutsideClick.bind(this);
+    this.html = document.documentElement;
+    this.outside = 'data-outside';
+  }
+
+  handleOutsideClick(event) {
+    // Verifica se o clique foi fora do elemento
+    if (!this.element.contains(event.target)) {
+      this.element.removeAttribute(this.outside);
+      this.events.forEach((userEvent) => {
+        this.html.removeEventListener(userEvent, this.handleOutsideClick);
       });
-      callback();
+      this.callback(); // Executa a callback
     }
   }
 
-  if (!element.hasAttribute(outside)) {
-    events.forEach((userEvent) => {
-      setTimeout(() => {
-        html.addEventListener(userEvent, handleOutsideClick);
+  init() {
+    // Verifica se o elemento ainda não está marcado como "outside"
+    if (!this.element.hasAttribute(this.outside)) {
+      this.events.forEach((userEvent) => {
+        setTimeout(() => {
+          this.html.addEventListener(userEvent, this.handleOutsideClick);
+        });
       });
-    });
-    element.setAttribute(outside, "");
+      this.element.setAttribute(this.outside, '');
+    }
   }
 }
-export default outsideClick;
+
+export default OutsideClick;
