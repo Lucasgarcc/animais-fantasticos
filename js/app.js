@@ -5,10 +5,12 @@ import TabNav from './modules/tab.js';
 import Modal from './modules/modal.js';
 import ToolTip from './modules/tooltip.js';
 import DropDownMenu from './modules/dropdownMenu.js';
-import initMenuMobile from './modules/menu-mobile.js';
+import MenuMobile from './modules/menu-mobile.js';
 import initFuncionamento from './modules/funcionamento.js';
 import initFetchAinimas from './modules/fetch-animais.js';
 import initFetchBitcoin from './modules/fetch-bitcoin.js';
+
+const menuMobile = new MenuMobile('[data-menu="button"]', '[data-menu="list"]');
 
 const dropdownMenu = new DropDownMenu('[data-dropdown]');
 
@@ -37,8 +39,8 @@ modal.init();
 tooltip.init();
 scrollAnima.init();
 dropdownMenu.init();
+menuMobile.init();
 
-initMenuMobile();
 initFuncionamento();
 initFetchAinimas();
 initFetchBitcoin();
