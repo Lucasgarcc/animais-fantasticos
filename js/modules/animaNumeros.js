@@ -3,24 +3,25 @@ class AnimaNumeros {
     this.numeros = document.querySelectorAll(numero);
     this.observerTarget = document.querySelector(observerTarget);
     this.observerClass = observerClass;
+    this.animaJaExecutada = false; // Inicializa a flag
 
-    // Bind o this do objeto do callback da mutation
-    this.handleMutation = this.handleMutation.bind(this);
+    // Bind o this do objeto do callback do IntersectionObserver
+    this.handleIntersection = this.handleIntersection.bind(this);
     this.init();
   }
 
   static incrementorNumero(numero) {
     const total = +numero.innerHTML;
-    const incremento = Math.floor(total / 100);
+    const incremento = Math.floor(total / 200);
     let start = 0;
     const timer = setInterval(() => {
       start += incremento;
       numero.innerText = start;
-      if (start > total) {
+      if (start >= total) {
         numero.innerText = total;
         clearInterval(timer);
       }
-    }, 50); // Valor fixo para consistência
+    }, 20); // Valor fixo para consistência
   }
 
   animaNumeros() {
@@ -29,22 +30,38 @@ class AnimaNumeros {
     );
   }
 
-  // Metodo que ocorre quando a mutação tiver ativa
-  handleMutation(mutation) {
-    if (mutation[0].target.classList.contains(this.observerClass)) {
-      this.observer.disconnect();
-      this.animaNumeros();
-    }
+  // Método que ocorre quando o alvo entra na viewport
+  handleIntersection(entries) {
+    // Entradas
+
+    entries.forEach((entry) => {
+      /* isIntersecting é uma propriedade do objeto IntersectionObserverEntry, 
+      que é passado para o callback do IntersectionObserver quando um elemento é observado. */
+
+      if (entry.isIntersecting) {
+        // Adiciona a classe de observação
+
+        entry.target.classList.add(this.observerClass);
+        this.animaNumeros(); // Inicia a animação dos números
+
+        // Se desejar que a animação ocorra apenas uma vez, remova a seguinte linha
+
+        this.observer.unobserve(entry.target); // Para de observar após a animação
+      }
+    });
   }
 
-  addMutationObserver() {
-    this.observer = new MutationObserver(this.handleMutation);
-    this.observer.observe(this.observerTarget, { attributes: true });
+  addIntersectionObserver() {
+    this.observer = new IntersectionObserver(this.handleIntersection, {
+      threshold: 0.5, // 50% da página
+      // Ajuste conforme necessário para quando o elemento é considerado visível
+    });
+    this.observer.observe(this.observerTarget);
   }
 
   init() {
     if (this.numeros.length && this.observerTarget) {
-      this.addMutationObserver();
+      this.addIntersectionObserver();
     }
     return this;
   }

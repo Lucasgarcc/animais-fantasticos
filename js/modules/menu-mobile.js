@@ -33,7 +33,9 @@ class MenuMobile {
 
   addMenuMobileEvent() {
     this.eventos.forEach((evento) => {
-      this.menuButton.addEventListener(evento, this.openMenu);
+      this.menuButton.addEventListener(evento, this.openMenu, {
+        passive: true,
+      });
     });
   }
 
