@@ -6,9 +6,11 @@ import Modal from './modules/modal.js';
 import ToolTip from './modules/tooltip.js';
 import DropDownMenu from './modules/dropdownMenu.js';
 import MenuMobile from './modules/menu-mobile.js';
-import initFuncionamento from './modules/funcionamento.js';
+import Funcionamento from './modules/funcionamento.js';
 import initFetchAinimas from './modules/fetch-animais.js';
 import initFetchBitcoin from './modules/fetch-bitcoin.js';
+
+const funcionamento = new Funcionamento('[data-semana]', 'aberto');
 
 const menuMobile = new MenuMobile('[data-menu="button"]', '[data-menu="list"]');
 
@@ -40,7 +42,7 @@ tooltip.init();
 scrollAnima.init();
 dropdownMenu.init();
 menuMobile.init();
+funcionamento.init();
 
-initFuncionamento();
 initFetchAinimas();
 initFetchBitcoin();
