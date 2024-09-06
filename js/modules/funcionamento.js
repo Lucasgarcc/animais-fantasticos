@@ -1,52 +1,58 @@
-// const agora = new Date();
-// const future = new Date('Sep 10 2024 00:00:00');
+class Funcionamento {
+  constructor(funcionamento, active) {
+    this.funcionamento = document.querySelector(funcionamento);
+    this.active = active;
+    this.init();
+  }
 
-// console.log(agora.getMonth());
-// console.log(future);
+  obterDadosFuncionamento() {
+    // Obtém os dados de dias da semana e horário de funcionamento
+    this.diasSemana = this.funcionamento.dataset.semana.split(',').map(Number);
+    this.horarioSemana = this.funcionamento.dataset.horario
+      .split(',')
+      .map(Number);
+  }
 
-/*
-function transformarDias(tempo) {
-  return tempo / (24 * 60 * 60 * 1000);  //ver quantos dias faltam horas só retirar o 24
-} */
+  obterDadosAtuais() {
+    // Obtém o dia e horário atual
+    this.dataAgora = new Date();
+    this.diaAgora = this.dataAgora.getDay();
+    this.horarioAgora = this.dataAgora.getUTCHours() - 3;
+  }
 
-/* const diasAgora =  transformarDias(agora.getTime())
-const diasFuturo = transformarDias(future.getTime())
-//começa com 0 até 11 */
+  estaAberto() {
+    // Verifica se está aberto com base nos dias e horários de funcionamento
+    const semanaAberto = this.diasSemana.indexOf(this.diaAgora) !== -1;
+    const horarioAberto =
+      this.horarioAgora >= this.horarioSemana[0] &&
+      this.horarioAgora < this.horarioSemana[1];
+    return semanaAberto && horarioAberto;
+  }
 
-// console.log(diasAgora);
-// console.log(diasFuturo);
-
-// console.log( Math.floor(diasAgora - diasFuturo));
-
-function initFuncionamento() {
-  const funcionamento = document.querySelector("[data-semana]");
-  const diasSemana = funcionamento.dataset.semana.split(",").map(Number);
-  const horarioSemana = funcionamento.dataset.horario.split(",").map(Number);
-
-  console.log(diasSemana);
-  console.log(horarioSemana);
-
-  const dataAgora = new Date();
-  const diaAgora = dataAgora.getDay();
-  const horarioAgora = dataAgora.getHours();
-
-  // dias da seman
-  const semanaAberto = diasSemana.indexOf(diaAgora) !== -1;
-
-  // horario de funcionamento
-  const horarioAberto =
-    horarioAgora >= horarioSemana[0] && horarioAgora < horarioSemana[1]; // expressão que comparamos se horario for maior que 18horas de funcionamento
-
-  // tentando colocar texto de aberto ou fechado ao lado do => 18 o
-  function textoFechado() {
-    document.addEventListener("mouseover", () => {
-      funcionamento.innerHTML = "aberto";
+  mostrarTextoAberto() {
+    // Adiciona o texto "aberto" quando o mouse passa sobre o elemento
+    document.addEventListener('mouseover', () => {
+      this.funcionamento.innerHTML = 'Aberto';
     });
   }
-  if (semanaAberto && horarioAberto) {
-    funcionamento.classList.add("aberto");
-    textoFechado();
+
+  ativarAberto() {
+    // Adiciona a classe "aberto" e chama a função para mostrar o texto se estiver aberto
+    if (this.estaAberto()) {
+      this.funcionamento.classList.add(this.active);
+      this.mostrarTextoAberto();
+    }
+  }
+
+  init() {
+    // Inicializa a classe verificando se o elemento existe e chama os métodos necessários
+    if (this.funcionamento) {
+      this.obterDadosFuncionamento();
+      this.obterDadosAtuais();
+      this.ativarAberto();
+    }
+    return this;
   }
 }
 
-export default initFuncionamento();
+export default Funcionamento;
